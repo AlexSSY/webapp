@@ -1,0 +1,59 @@
+{
+  "phones": [
+    {
+      "id": "1",
+      "user_id": 123456789,
+      "phone_number": "+380300500400"
+    },
+    {
+      "id": "ad7a",
+      "user_id": 123456789,
+      "phone_number": "435345435354"
+    },
+    {
+      "id": "ffef",
+      "user_id": 123456789,
+      "phone_number": "3345345345"
+    },
+    {
+      "id": "2022",
+      "user_id": 123456789,
+      "phone_number": "34534534534"
+    },
+    {
+      "id": "41c8",
+      "user_id": 123456789,
+      "phone_number": "000000000000"
+    },
+    {
+      "id": "b3ca",
+      "user_id": 123456789,
+      "phone_number": "343"
+    },
+    {
+      "id": "7e6e",
+      "user_id": 5235364536,
+      "phone_number": "+380962089514"
+    },
+    {
+      "id": "9d4e",
+      "user_id": 5235364536,
+      "phone_number": "+38099999999"
+    },
+    {
+      "id": "35f2",
+      "user_id": 5235364536,
+      "phone_number": "+493433"
+    },
+    {
+      "id": "5403",
+      "user_id": 5235364536,
+      "phone_number": "+12"
+    },
+    {
+      "id": "27fb",
+      "user_id": 5235364536,
+      "phone_number": "+380349980234"
+    }
+  ]
+}
