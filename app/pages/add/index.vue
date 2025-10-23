@@ -16,9 +16,10 @@
 </template>
 
 <script setup>
-import AddPhoneForm from '~/components/add/PhoneForm.vue'
+import PhoneForm from '~/components/phone/Form.vue'
 import VerifyCodeForm from '~/components/verify-code/Form.vue'
 import PasswordForm from '~/components/password/Form.vue'
+import FinalForm from '~/components/final/Form.vue'
 
 import { computed } from 'vue'
 import { BackButton } from 'vue-tg'
@@ -27,9 +28,10 @@ const store = usePhoneFormStore()
 const router = useRouter()
 
 const formMap = {
-  phone: AddPhoneForm,
+  phone: PhoneForm,
   code: VerifyCodeForm,
   password: PasswordForm,
+  final: FinalForm,
 }
 
 const currentFormComponent = computed(() => formMap[store.currentForm])

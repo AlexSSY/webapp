@@ -20,7 +20,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
       codeTimeout: -1,
       codeSended: null,
       password: '',
-      currentForm: 'phone',
+      currentForm: 'final',
       loading: false,
     }
   },
@@ -104,7 +104,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
       }
 
       var onSuccess = (res) => {
-        this.currentForm = 'password'
+        this.currentForm = 'final'
       }
 
       await this._makeRequest(payload, '/api/password-verify', onSuccess)

@@ -5,9 +5,11 @@
         v-for="(d, i) in 5"
         :key="i"
         v-model="digits[i]"
+        ref="inputs"
         maxlength="1"
         type="text"
         inputmode="numeric"
+        :disabled="disabled"
         class="w-12 h-12 p-2 text-center bg-transparent ring-0 border-2 rounded-md outline-none text-main"
         :class="classList"
         @input="handleInput(i)"
@@ -20,13 +22,16 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 
-const props = defineProps(['modelValue'])
+const props = defineProps(['modelValue', 'disabled'])
 const emit = defineEmits(['update:modelValue', 'complete'])
 const store = usePhoneFormStore()
 
 const digits = ref(['', '', '', '', ''])
+const inputs = ref([])
+
+onMounted(() => inputs.value[0].focus())
 
 // Синхронизация при изменении modelValue
 watch(
@@ -40,9 +45,19 @@ watch(
   { immediate: true }
 )
 
+watch(() => store.error, async (val) => {
+  if (val !== '') {
+    digits.value = ['', '', '', '', '']
+    await nextTick()
+    inputs.value[0].focus()
+  }
+  
+}, { immediate: true })
+
 var classList = computed(() => store.error ? 'border-[var(--tg-theme-destructive-text-color)]' : 'border-[var(--tg-theme-button-color)]')
 
 function handleInput(i) {
+  store.error = ''
   if (digits.value[i].length === 1 && i < 4) {
     document.querySelectorAll('input')[i + 1].focus()
   }

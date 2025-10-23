@@ -7,12 +7,13 @@
     </div>
 
     <div class="space-y-8">
-      <AddCodeInput />
-      <AddPhoneInput v-model="store.phoneNumber" />
+      <PhoneCodeInput />
+      <PhoneInput v-model="store.phoneNumber" />
       
       <div class="flex justify-end">
         <button @click="doSubmit" class="w-16 h-16 flex items-center justify-center bg-[var(--tg-theme-button-color)] rounded-full">
-          <Back class="transform rotate-180 text-[var(--tg-theme-button-text-color)]" />
+          <Spinner size="30" blue="true" :loading="store.loading" />
+          <Back v-show="!store.loading" class="transform rotate-180 text-[var(--tg-theme-button-text-color)]" />
         </button>
       </div>
     </div>
@@ -26,6 +27,7 @@ import Back from '~/assets/svg/back.svg'
 const store = usePhoneFormStore()
 
 var doSubmit = function() {
+  if (store.loading) return;
   store.error = ''
 
   if (!store.phoneNumber) {

@@ -8,7 +8,8 @@
     </div>
 
     <div class="space-y-8">
-      <verify-code-input v-model="store.code" @complete="doSubmit" />
+      <verify-code-input v-model="store.code" @complete="doSubmit" :disabled="store.loading" />
+      <Spinner :loading="store.loading" />
     </div>
 
   </div>

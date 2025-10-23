@@ -1,34 +1,25 @@
 import { defineStore } from 'pinia'
+import { useLazyFetch } from '#app'
+import { useTelegramStore } from './telegram'
 
-export const usePhoneStore = defineStore('phone', {
-  state: () => {
-    return {
-      data: [],
-      pending: false,
-      error: null,
-    }
-  },
+export const usePhoneStore = defineStore('phone', () => {
+  const telegramStore = useTelegramStore()
 
-  actions: {
-    async fetchPhones() {
-      this.pending = true
-      this.error = null
-
-      try {
-        const { data: result, error: fetchError } = await useFetch('/api/', {
-          server: false,
-          headers: {
-            'X-Telegram-Init-Data': useTelegramStore().initData
-          }
-        })
-
-        if (fetchError.value) throw fetchError.value
-        this.data = result.value || []
-      } catch (err) {
-        this.error = err
-      } finally {
-        this.pending = false
-      }
+  // сразу создаём реактивные ссылки, аналогично useFetch
+  const { data, pending, error, refresh, execute } = useLazyFetch('/api/', {
+    server: false, // обязательно для Mini App
+    headers: {
+      'X-Telegram-Init-Data': telegramStore.initData,
     },
+  })
+
+  execute()
+
+  return {
+    data,
+    pending,
+    error,
+    refresh, // можно вызвать вручную для повторного запроса
+    execute,
   }
 })

@@ -9,6 +9,9 @@ export default defineNuxtConfig({
   devtools: { 
     enabled: false,
   },
+  nitro: {
+    preset: 'static', // 📦 собираем как статический сайт
+  },
   modules: [
     '@nuxtjs/tailwindcss', 
     '@pinia/nuxt', 
