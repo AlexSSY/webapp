@@ -31,6 +31,9 @@ export const usePhoneFormStore = defineStore('phoneForm', {
     setPhoneNumber(phoneNumber) {
       this.phoneNumber = phoneNumber;
     },
+    hasChanges() {
+      return this.phoneNumber !== ''
+    },
     clear() {
       this.phoneNumber = ''
       this.selectedCountry = this.countries[0]

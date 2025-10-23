@@ -1,6 +1,5 @@
 import { usePopup } from 'vue-tg'
 import { nextTick } from 'vue'
-import { usePhoneStore } from '@/stores/phone'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const store = usePhoneFormStore()
@@ -8,8 +7,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   if (from.path.startsWith('/add') && !to.path.startsWith('/add')) {
     await nextTick() // убедиться, что Telegram API и popup готовы
-    const confirmed = await popup.showConfirm('You are leaving this page and will lose your data.')
-    if (!confirmed) return false
+    if (store.hasChanges()) {
+      const confirmed = await popup.showConfirm('You are leaving this page and will lose your data.')
+      if (!confirmed) return false
+    }
     store.clear()
   }
 })
