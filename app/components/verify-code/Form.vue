@@ -8,7 +8,7 @@
     </div>
 
     <div class="space-y-8">
-      <verify-code-input v-model="phoneStore.code" @complete="doSubmit" />
+      <verify-code-input v-model="store.code" @complete="doSubmit" />
     </div>
 
   </div>
@@ -17,12 +17,9 @@
 <script setup>
 import Sms from '~/assets/svg/sms.svg'
 
-import { useMiniApp } from 'vue-tg';
+var store = usePhoneFormStore()
 
-var phoneStore = usePhoneStore()
-var miniApp = useMiniApp()
-
-var doSubmit = (code) => {
-  phoneStore.verifyCode(miniApp.initData)
+var doSubmit = async () => {
+  await store.verifyCode()
 }
 </script>

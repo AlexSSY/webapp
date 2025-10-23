@@ -7,5 +7,5 @@
 
 <script setup>
 import CaretDown2 from '~/assets/svg/caret-down2.svg';
-var store = usePhoneStore();
+var store = usePhoneFormStore();
 </script>

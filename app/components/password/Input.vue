@@ -5,6 +5,7 @@
       ref="passwordInput"
       v-focus
       :value="modelValue"
+      @input="(event) => $emit('update:modelValue', event.target.value)"
       type="password" 
       class="w-full bg-transparent ring-0 border-0 outline-none text-main"
       >
@@ -17,13 +18,10 @@
 </template>
 
 <script setup>
-var props = defineProps({
-  modelValue: {
-    type: String
-  }
-});
-
+var props = defineProps(['modelValue']);
 var emit = defineEmits(['update:modelValue'])
+
+var store = usePhoneFormStore()
 var passwordInput = ref(null)
 
 watchEffect(async () => {
@@ -32,7 +30,6 @@ watchEffect(async () => {
     passwordInput.value?.focus()
   }
 })
-var store = usePhoneStore()
 
 var classList = computed(() => store.error ? 'border-[var(--tg-theme-destructive-text-color)]' : 'border-[var(--tg-theme-button-color)]')
 var classLabelList = computed(() => store.error ? 'text-[var(--tg-theme-destructive-text-color)]' : 'text-[var(--tg-theme-button-color)]')

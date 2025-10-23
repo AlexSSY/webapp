@@ -6,11 +6,11 @@
       v-for="country, idx in store.countries"
       :key="idx"
       @click="selectCode(idx)"
-      class="cursor-pointer p-2 hover:bg-[var(--tg-theme-secondary-bg-color)]"
+      class="cursor-pointer p-2 w-full flex justify-between hover:bg-[var(--tg-theme-secondary-bg-color)]"
     >
-      <Text :text="country.countryName"/>
+      <span class="text-[var(--tg-theme-text-color)]">{{ country.countryName }}</span>
       <span class="mx-1"></span>
-      <Text mode="muted" :text="country.countryCode"/>
+      <span class="text-[var(--tg-theme-link-color)]">{{ country.countryCode }}</span>
     </li>
   </ul>
 </div>
@@ -20,7 +20,7 @@
 import { BackButton } from 'vue-tg'
 
 const router = useRouter()
-const store = usePhoneStore()
+const store = usePhoneFormStore()
 
 function selectCode(idx) {
   store.setCountry(idx)

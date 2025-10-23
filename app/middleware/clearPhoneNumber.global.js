@@ -3,7 +3,7 @@ import { nextTick } from 'vue'
 import { usePhoneStore } from '@/stores/phone'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  const store = usePhoneStore()
+  const store = usePhoneFormStore()
   const popup = usePopup()
 
   if (from.path.startsWith('/add') && !to.path.startsWith('/add')) {

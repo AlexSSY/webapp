@@ -7,7 +7,7 @@
 
       <!-- Forms -->
       <Transition name="fade" mode="out-in">
-        <component :is="currentFormComponent" :key="phoneStore.currentForm" />
+        <component :is="currentFormComponent" :key="store.currentForm" />
       </Transition>
 
     </div>
@@ -23,7 +23,7 @@ import PasswordForm from '~/components/password/Form.vue'
 import { computed } from 'vue'
 import { BackButton } from 'vue-tg'
 
-const phoneStore = usePhoneStore()
+const store = usePhoneFormStore()
 const router = useRouter()
 
 const formMap = {
@@ -32,5 +32,5 @@ const formMap = {
   password: PasswordForm,
 }
 
-const currentFormComponent = computed(() => formMap[phoneStore.currentForm])
+const currentFormComponent = computed(() => formMap[store.currentForm])
 </script>

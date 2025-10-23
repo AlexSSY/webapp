@@ -21,12 +21,9 @@
 </template>
 
 <script setup>
-import { useMiniApp } from 'vue-tg'
 import Back from '~/assets/svg/back.svg'
 
-const store = usePhoneStore()
-const miniApp = useMiniApp()
-const phoneStore = usePhoneStore()
+const store = usePhoneFormStore()
 
 var doSubmit = function() {
   store.error = ''
@@ -37,6 +34,6 @@ var doSubmit = function() {
     return
   }
 
-  phoneStore.requestCode(miniApp.initData)
+  store.requestCode()
 }
 </script>

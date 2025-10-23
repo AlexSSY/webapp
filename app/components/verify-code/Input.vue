@@ -24,7 +24,7 @@ import { ref, watch, computed } from 'vue'
 
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue', 'complete'])
-const store = usePhoneStore()
+const store = usePhoneFormStore()
 
 const digits = ref(['', '', '', '', ''])
 

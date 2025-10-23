@@ -26,7 +26,7 @@
 
 <script setup>
 import { computed, ref, watchEffect } from 'vue';
-var store = usePhoneStore();
+var store = usePhoneFormStore();
 
 var props = defineProps({
   modelValue: {

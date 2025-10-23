@@ -7,7 +7,7 @@
     </div>
 
     <div class="space-y-8">
-      <PasswordInput v-model="phoneStore.password" />
+      <PasswordInput v-model="store.password" />
 
       <div class="flex justify-end">
         <button @click="doSubmit" class="w-16 h-16 flex items-center justify-center bg-[var(--tg-theme-button-color)] rounded-full">
@@ -20,7 +20,11 @@
 </template>
 
 <script setup>
-var phoneStore = usePhoneStore()
+import Back from '~/assets/svg/back.svg'
 
-var doSubmit = () => {}
+var store = usePhoneFormStore()
+
+var doSubmit = () => {
+  store.verifyPassword()
+}
 </script>
