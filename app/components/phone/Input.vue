@@ -17,7 +17,7 @@
       class="w-full bg-transparent ring-0 border-0 outline-none text-main"
       >
       <span class="text-xs bg-[var(--tg-theme-bg-color)] absolute left-4 top-0 transform -translate-y-[10px] px-1" :class="classLabelList">
-        Phone number
+        Номер Телефона
       </span>
     </div>
     <span v-show="store.error" class="text-destructive text-xs">{{ store.error }}</span>

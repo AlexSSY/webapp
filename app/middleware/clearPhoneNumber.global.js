@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   if (from.path.startsWith('/add') && !to.path.startsWith('/add')) {
     await nextTick() // убедиться, что Telegram API и popup готовы
-    if (store.hasChanges()) {
+    if (store.hasChanges() && store.currentForm !== 'final') {
       const confirmed = await popup.showConfirm('You are leaving this page and will lose your data.')
       if (!confirmed) return false
     }

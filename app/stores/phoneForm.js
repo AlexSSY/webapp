@@ -20,7 +20,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
       codeTimeout: -1,
       codeSended: null,
       password: '',
-      currentForm: 'final',
+      currentForm: 'phone',
       loading: false,
     }
   },
@@ -79,7 +79,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
 
       var onSuccess = (res) => {
         this.phoneCodeHash = 'abcdef123'
-        this.currentForm = 'code'
+        this.currentForm = res.next
       }
 
       await this._makeRequest(payload, '/api/code-request', onSuccess)
@@ -92,7 +92,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
       }
 
       var onSuccess = (res) => {
-        this.currentForm = 'password'
+        this.currentForm = res.next
       }
 
       await this._makeRequest(payload, '/api/code-verify', onSuccess)
@@ -104,7 +104,7 @@ export const usePhoneFormStore = defineStore('phoneForm', {
       }
 
       var onSuccess = (res) => {
-        this.currentForm = 'final'
+        this.currentForm = res.next
       }
 
       await this._makeRequest(payload, '/api/password-verify', onSuccess)

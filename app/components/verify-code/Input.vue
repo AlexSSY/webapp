@@ -38,6 +38,7 @@ watch(
   () => props.modelValue,
   (val) => {
     if (val && val.length === 5) {
+      store.code = val
       digits.value = Array.from(val)
       emit('complete', val)
     }

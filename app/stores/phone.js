@@ -7,13 +7,11 @@ export const usePhoneStore = defineStore('phone', () => {
 
   // сразу создаём реактивные ссылки, аналогично useFetch
   const { data, pending, error, refresh, execute } = useLazyFetch('/api/', {
-    server: false, // обязательно для Mini App
+    server: false,
     headers: {
       'X-Telegram-Init-Data': telegramStore.initData,
     },
   })
-
-  execute()
 
   return {
     data,

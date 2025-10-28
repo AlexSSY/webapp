@@ -2,8 +2,8 @@
   <div class="px-4 space-y-8">
 
     <div class="space-y-2 text-center px-6">
-      <p class="font-bold text-main">Your phone number</p>
-      <p class="text-sm text-hint">Please confirm your country code and enter your phone number</p>
+      <p class="font-bold text-main">Введите номер телефона</p>
+      <p class="text-sm text-hint">ВЫберите страну и введдите номер от существующего аккаунта Telegram</p>
     </div>
 
     <div class="space-y-8">
@@ -31,7 +31,7 @@ var doSubmit = function() {
   store.error = ''
 
   if (!store.phoneNumber) {
-    store.error = 'Please enter your phone number.'
+    store.error = 'Это поле не может быть пустым.'
     navigator.vibrate(100)
     return
   }

@@ -1,10 +1,14 @@
 <template>
-  <span class="text-center text-main">Number successfully added.</span>
-  <NuxtLink to="/" class="text-link">Home</NuxtLink>
+  <div class="flex flex-col items-center">
+    <p class="text-center text-main">Number successfully added.</p>
+    <NuxtLink to="/" class="text-link btn mx-auto mt-4">Home</NuxtLink>
+  </div>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
 
-onMounted(usePhoneFormStore().clear)
+const store = usePhoneStore()
+
+onMounted(store.refresh)
 </script>
